@@ -22,7 +22,6 @@ class GeneratorsServiceProvider extends ServiceProvider
         ConfigCommand::class,
         CrudModelCommand::class,
         CrudControllerCommand::class,
-        CrudOperationCommand::class,
         CrudRequestCommand::class,
         CrudCommand::class,
         ModelCommand::class,
