@@ -1,6 +1,6 @@
 <?php
 
-namespace Backpack\Generators\Console\Commands;
+namespace Tupy\Generators\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Backpack\CRUD\app\Console\Commands;
+namespace Tupy\CRUD\app\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +19,7 @@ class AddSidebarContent extends Command
      *
      * @var string
      */
-    protected $description = 'Add HTML/PHP code to the Backpack sidebar_content file';
+    protected $description = 'Add HTML/PHP code to sidebar_content file';
     /**
      * Create a new command instance.
      *
@@ -36,7 +36,7 @@ class AddSidebarContent extends Command
      */
     public function handle()
     {
-        $path = config('generator.path'); //'resources/views/vendor/backpack/base/inc/sidebar_content.blade.php';
+        $path = config('generator.path');
         $disk_name = 'root';
         $disk = Storage::disk($disk_name);
         $code = $this->argument('code');
@@ -48,7 +48,7 @@ class AddSidebarContent extends Command
             } else {
                 $this->error('Could not write to '.$path.' file.');
             }
-            
+
         } else {
             $this->error("The '.$path.' file does not exist");
         }
