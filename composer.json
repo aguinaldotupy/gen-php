@@ -1,0 +1,40 @@
+{
+    "name": "tupy/generators",
+    "description": "Generate files for laravel projects",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aguinaldo Tupy",
+            "email": "aguinaldo.tupy@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "doctrine/dbal": "^2.5",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/helpers": "^1.1",
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "orchestra/testbench": "^3.0",
+        "orchestra/database": "3.8.x-dev",
+    },
+    "autoload": {
+        "psr-4": {
+            "Tupy\\Generators\\": "src"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --testdox"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Tupy\\Generators\\GeneratorsServiceProvider"
+            ]
+        }
+    }
+}
