@@ -4,32 +4,23 @@ namespace Tupy\Generators;
 
 use Illuminate\Support\ServiceProvider;
 
-use Tupy\Generators\Console\Commands\CrudCommand;
-use Tupy\Generators\Console\Commands\ViewCommand;
-use Tupy\Generators\Console\Commands\ModelCommand;
-use Tupy\Generators\Console\Commands\ConfigCommand;
-use Tupy\Generators\Console\Commands\RequestCommand;
-use Tupy\Generators\Console\Commands\CrudModelCommand;
-use Tupy\Generators\Console\Commands\CrudRequestCommand;
-use Tupy\Generators\Console\Commands\CrudControllerCommand;
-
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Route;
-
 class GeneratorsServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        ConfigCommand::class,
-        CrudModelCommand::class,
-        CrudControllerCommand::class,
-        CrudRequestCommand::class,
-        CrudCommand::class,
-        ModelCommand::class,
-        RequestCommand::class,
-        ViewCommand::class,
+        \Tupy\Generators\Console\Commands\ConfigCommand::class,
+        \Tupy\Generators\Console\Commands\CrudModelCommand::class,
+        \Tupy\Generators\Console\Commands\CrudControllerCommand::class,
+        \Tupy\Generators\Console\Commands\CrudRequestCommand::class,
+        \Tupy\Generators\Console\Commands\CrudCommand::class,
+        \Tupy\Generators\Console\Commands\ModelCommand::class,
+        \Tupy\Generators\Console\Commands\RequestCommand::class,
+        \Tupy\Generators\Console\Commands\ViewCommand::class,
+        \Tupy\Generators\Console\Commands\AddRouteContent::class,
+        \Tupy\Generators\Console\Commands\AddSidebarContent::class
+
     ];
 
-    public function boot(Router $router)
+    public function boot()
     {
         $this->loadConfigs();
 
