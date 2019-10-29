@@ -2,9 +2,9 @@
 
 namespace Tupy\Generators\Console\Commands;
 
-use Illuminate\Console\GeneratorCommand;
+use Illuminate\Console\Command;
 
-class CrudViewCommand extends GeneratorCommand
+class CrudViewCommand extends Command
 {
     /**
      * The console command name.
