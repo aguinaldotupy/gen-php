@@ -5,7 +5,7 @@ namespace Tupy\Generators\Console\Commands;
 use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 
-class ModelBackpackCommand extends GeneratorCommand
+class ModelCommand extends GeneratorCommand
 {
     /**
      * The console command name.
