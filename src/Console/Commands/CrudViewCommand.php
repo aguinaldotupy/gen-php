@@ -18,130 +18,32 @@ class CrudViewCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'generator:crud-view {name} {--crud}';
+    protected $signature = 'generator:crud-view {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate templated view';
+    protected $description = 'Generate all files templated crud view';
 
-    /**
-     * The type of class being generated.
-     *
-     * @var string
-     */
-    protected $type = 'View';
-
-    /**
-     * Get the stub file for the generator.
-     *
-     * @return string
-     */
-    protected function getStub()
-    {
-        if ($this->option('crud')) {
-            return [
-                __DIR__.'/../stubs/view-index.stub',
-                __DIR__.'/../stubs/view-create.stub',
-                __DIR__.'/../stubs/view-edit.stub',
-                __DIR__.'/../stubs/view-form.stub',
-                __DIR__.'/../stubs/view-show.stub'
-            ];
-        }
-
-        return __DIR__.'/../stubs/view.stub';
-    }
-
-    /**
-     * Alias for the fire method.
-     *
-     * In Laravel 5.5 the fire() method has been renamed to handle().
-     * This alias provides support for both Laravel 5.4 and 5.5.
-     */
     public function handle()
     {
-        $this->fire();
-    }
+        $name = ucfirst($this->argument('name'));
 
-    /**
-     * Execute the console command.
-     *
-     * @return bool|null
-     */
-    public function fire()
-    {
-        $name = $this->getNameInput();
+        Artisan::call('generator:crud-view-index', ['name' => $name]);
+        echo Artisan::output();
 
-        $path = $this->getPath($name);
+        Artisan::call('generator:crud-view-create', ['name' => $name]);
+        echo Artisan::output();
 
-        if ($this->alreadyExists($this->getNameInput())) {
-            $this->error($this->type.' already exists!');
+        Artisan::call('generator:crud-view-edit', ['name' => $name]);
+        echo Artisan::output();
 
-            return false;
-        }
+        Artisan::call('generator:crud-view-form', ['name' => $name]);
+        echo Artisan::output();
 
-        $this->makeDirectory($path);
-
-        if ($this->option('crud')) {
-            $this->files->put($path, $this->buildClass('index'));
-            $this->files->put($path, $this->buildClass('create'));
-            $this->files->put($path, $this->buildClass('edit'));
-            $this->files->put($path, $this->buildClass('form'));
-            $this->files->put($path, $this->buildClass('show'));
-        } else {
-            $this->files->put($path, $this->buildClass($name));
-        }
-
-        $this->info($this->type.' created successfully.');
-    }
-
-    /**
-     * Determine if the class already exists.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    protected function alreadyExists($name)
-    {
-        return $this->files->exists($this->getPath($name));
-    }
-
-    /**
-     * Get the destination class path.
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    protected function getPath($name)
-    {
-        return $this->laravel['path'].'/../resources/views/'.str_replace('\\', '/', $name).'.blade.php';
-    }
-
-    /**
-     * Build the class with the given name.
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    protected function buildClass($name)
-    {
-        return $this->files->get($this->getStub());
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-
-        ];
+        Artisan::call('generator:crud-view-show', ['name' => $name]);
+        echo Artisan::output();
     }
 }

@@ -17,7 +17,12 @@ class GeneratorsServiceProvider extends ServiceProvider
         \Tupy\Generators\Console\Commands\ViewCommand::class,
         \Tupy\Generators\Console\Commands\AddRouteContent::class,
         \Tupy\Generators\Console\Commands\AddSidebarContent::class,
-        \Tupy\Generators\Console\Commands\CrudViewCommand::class
+        \Tupy\Generators\Console\Commands\CrudViewCommand::class,
+        \Tupy\Generators\Console\Commands\CrudViewIndexCommand::class,
+        \Tupy\Generators\Console\Commands\CrudViewCreateCommand::class,
+        \Tupy\Generators\Console\Commands\CrudViewEditCommand::class,
+        \Tupy\Generators\Console\Commands\CrudViewFormCommand::class,
+        \Tupy\Generators\Console\Commands\CrudViewShowCommand::class
 
     ];
 
