@@ -16,7 +16,8 @@ class GeneratorsServiceProvider extends ServiceProvider
         \Tupy\Generators\Console\Commands\RequestCommand::class,
         \Tupy\Generators\Console\Commands\ViewCommand::class,
         \Tupy\Generators\Console\Commands\AddRouteContent::class,
-        \Tupy\Generators\Console\Commands\AddSidebarContent::class
+        \Tupy\Generators\Console\Commands\AddSidebarContent::class,
+        \Tupy\Generators\Console\Commands\CrudViewCommand::class
 
     ];
 
@@ -26,13 +27,9 @@ class GeneratorsServiceProvider extends ServiceProvider
     {
         $this->loadConfigs();
 
-        $this->loadRoutesFrom(__DIR__.'/web.php');
+        $this->mergeConfigFrom(__DIR__.'/../config/generator.php', 'generator');
 
         if ($this->app->runningInConsole()) {
-            // $this->publishes([
-            //     __DIR__.'/routes/admin.php' => base_path('/routes/admin.php')
-            // ], 'generator-route-admin');
-
             $this->publishes([
                 __DIR__.'/../config/generator.php' => config_path('generator.php'),
             ], 'generator-config');

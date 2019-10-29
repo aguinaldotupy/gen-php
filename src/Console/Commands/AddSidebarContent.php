@@ -36,7 +36,7 @@ class AddSidebarContent extends Command
      */
     public function handle()
     {
-        $path = config('generator.path');
+        $path = base_path().config('generator.path');
         $disk_name = config('generator.disk');
         $disk = Storage::disk($disk_name);
         $code = $this->argument('code');
@@ -48,9 +48,8 @@ class AddSidebarContent extends Command
             } else {
                 $this->error('Could not write to '.$path.' file.');
             }
-
         } else {
-            $this->error("The '.$path.' file does not exist");
+            $this->error("The ".$path." file does not exist");
         }
     }
 }

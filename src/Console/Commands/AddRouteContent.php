@@ -38,7 +38,7 @@ class AddRouteContent extends Command
      */
     public function handle()
     {
-        $path = 'routes/web.php';
+        $path = '/routes/web.php';
         $disk_name = config('generator.disk');
         $disk = Storage::disk($disk_name);
         $code = $this->argument('code');
@@ -57,22 +57,23 @@ class AddRouteContent extends Command
             } else {
                 $this->error('Could not write to file: '.$path);
             }
-        } else {
-            $command = 'php artisan vendor:publish';
-            $process = new Process($command, null, null, null, 300, null);
-            $process->run(function ($type, $buffer) {
-                if (Process::ERR === $type) {
-                    $this->line($buffer);
-                } else {
-                    $this->line($buffer);
-                }
-            });
-            // executes after the command finishes
-            if (! $process->isSuccessful()) {
-                throw new ProcessFailedException($process);
-            }
-            $this->handle();
         }
+        // else {
+        //     $command = 'php artisan vendor:publish';
+        //     $process = new Process($command, null, null, null, 300, null);
+        //     $process->run(function ($type, $buffer) {
+        //         if (Process::ERR === $type) {
+        //             $this->line($buffer);
+        //         } else {
+        //             $this->line($buffer);
+        //         }
+        //     });
+        //     // executes after the command finishes
+        //     if (! $process->isSuccessful()) {
+        //         throw new ProcessFailedException($process);
+        //     }
+        //     $this->handle();
+        // }
     }
 
     private function customRoutesFileEndLine($file_lines)
