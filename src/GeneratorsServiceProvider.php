@@ -20,14 +20,18 @@ class GeneratorsServiceProvider extends ServiceProvider
 
     ];
 
+    // public $routeFilePath = '/routes/web.php';
+
     public function boot()
     {
         $this->loadConfigs();
 
+        $this->loadRoutesFrom(__DIR__.'/web.php');
+
         if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/routes/admin.php' => base_path('/routes/admin.php')
-            ], 'generator-route-admin');
+            // $this->publishes([
+            //     __DIR__.'/routes/admin.php' => base_path('/routes/admin.php')
+            // ], 'generator-route-admin');
 
             $this->publishes([
                 __DIR__.'/../config/generator.php' => config_path('generator.php'),
@@ -52,6 +56,5 @@ class GeneratorsServiceProvider extends ServiceProvider
             'driver' => 'local',
             'root'   => base_path(),
         ];
-
     }
 }

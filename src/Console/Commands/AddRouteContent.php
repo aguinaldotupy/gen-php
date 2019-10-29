@@ -38,7 +38,7 @@ class AddRouteContent extends Command
      */
     public function handle()
     {
-        $path = 'routes/admin.php';
+        $path = 'routes/web.php';
         $disk_name = config('generator.disk');
         $disk = Storage::disk($disk_name);
         $code = $this->argument('code');
