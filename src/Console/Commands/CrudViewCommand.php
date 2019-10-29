@@ -3,6 +3,7 @@
 namespace Tupy\Generators\Console\Commands;
 
 use Illuminate\Console\Command;
+use Artisan;
 
 class CrudViewCommand extends Command
 {
@@ -30,15 +31,21 @@ class CrudViewCommand extends Command
     public function handle()
     {
         $name = ucfirst($this->argument('name'));
+        // $path = explode('\\', $name);
 
-        Artisan::call('generator:crud-view-index', ['name' => $name]);
+        Artisan::call('generator:crud-view-index', ['name' => $name.'\index']);
+        echo Artisan::output();
 
-        Artisan::call('generator:crud-view-form', ['name' => $name]);
+        Artisan::call('generator:crud-view-form', ['name' => $name.'\form']);
+        echo Artisan::output();
 
-        Artisan::call('generator:crud-view-create', ['name' => $name]);
+        Artisan::call('generator:crud-view-create', ['name' => $name.'\create']);
+        echo Artisan::output();
 
-        Artisan::call('generator:crud-view-edit', ['name' => $name]);
+        Artisan::call('generator:crud-view-edit', ['name' => $name.'\edit']);
+        echo Artisan::output();
 
-        Artisan::call('generator:crud-view-show', ['name' => $name]);
+        Artisan::call('generator:crud-view-show', ['name' => $name.'\show']);
+        echo Artisan::output();
     }
 }
