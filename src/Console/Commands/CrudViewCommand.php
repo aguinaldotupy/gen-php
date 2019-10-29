@@ -32,18 +32,13 @@ class CrudViewCommand extends GeneratorCommand
         $name = ucfirst($this->argument('name'));
 
         Artisan::call('generator:crud-view-index', ['name' => $name]);
-        echo Artisan::output();
-
-        Artisan::call('generator:crud-view-create', ['name' => $name]);
-        echo Artisan::output();
-
-        Artisan::call('generator:crud-view-edit', ['name' => $name]);
-        echo Artisan::output();
 
         Artisan::call('generator:crud-view-form', ['name' => $name]);
-        echo Artisan::output();
+
+        Artisan::call('generator:crud-view-create', ['name' => $name]);
+
+        Artisan::call('generator:crud-view-edit', ['name' => $name]);
 
         Artisan::call('generator:crud-view-show', ['name' => $name]);
-        echo Artisan::output();
     }
 }
