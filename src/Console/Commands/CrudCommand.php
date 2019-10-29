@@ -44,14 +44,14 @@ class CrudCommand extends Command
         echo Artisan::output();
 
         // Create the CRUD route
-        Artisan::call('generator:add-custom-route', [
-            'code' => "Route::crud('".$this->argument('name')."', '".$name."CrudController');",
+        Artisan::call('generator:add-route', [
+            'code' => "Route::resource('".$this->argument('name')."', '".$name."Controller');",
         ]);
         echo Artisan::output();
 
         // Create the sidebar item
         Artisan::call('generator:add-sidebar-content', [
-            'code' => "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('".$this->argument('name')."') }}'><i class='nav-icon fa fa-question'></i> ".Str::plural($name).'</a></li>',
+            'code' => "<li class='nav-item'><a class='nav-link' href='{{ url('".$this->argument('name')."') }}'><i class='nav-icon fa fa-question'></i> ".Str::plural($name).'</a></li>',
         ]);
 
         echo Artisan::output();

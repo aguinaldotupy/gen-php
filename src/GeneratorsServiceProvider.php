@@ -28,6 +28,10 @@ class GeneratorsServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/routes/admin.php' => base_path('/routes/admin.php')
             ], 'generator-route-admin');
+
+            $this->publishes([
+                __DIR__.'/../config/generator.php' => config_path('generator.php'),
+            ], 'generator-config');
         }
     }
 

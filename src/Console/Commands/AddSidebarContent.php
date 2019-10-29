@@ -1,6 +1,6 @@
 <?php
 
-namespace Tupy\CRUD\app\Console\Commands;
+namespace Tupy\Generators\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +37,7 @@ class AddSidebarContent extends Command
     public function handle()
     {
         $path = config('generator.path');
-        $disk_name = 'root';
+        $disk_name = config('generator.disk');
         $disk = Storage::disk($disk_name);
         $code = $this->argument('code');
         if ($disk->exists($path)) {
