@@ -39,7 +39,7 @@ class AddRouteContent extends Command
     public function handle()
     {
         $path = 'routes/admin.php';
-        $disk_name = config('backpack.base.disk');
+        $disk_name = config('generator.disk');
         $disk = Storage::disk($disk_name);
         $code = $this->argument('code');
         if ($disk->exists($path)) {

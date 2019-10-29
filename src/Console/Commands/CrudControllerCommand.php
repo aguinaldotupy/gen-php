@@ -67,7 +67,7 @@ class CrudControllerCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\Http\Controllers\Admin';
+        return $rootNamespace.'\Http\Controllers';
     }
 
     /**
